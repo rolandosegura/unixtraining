@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# mkuser reads from stdin records separated by ',' each record has the form:
+# FirstName (SecondName)* LastName/@GBM/GBM
+# it writes to stdout linux commands to create users.
+
+sed -e 's;\/GBM@GBM;;g' -e s';,;\
+;g' | awk '
+NF == 2 {
+	user = tolower(substr($1,1,1) $2)
+}
+NF == 3 {
+	user = tolower(substr($1,1,1) $3)
+}
+{
+	printf "useradd -c \"%s\" -m -d/home/%s -s/bin/bash -p %s %s\n",$0,user,user,user
+}
+'
