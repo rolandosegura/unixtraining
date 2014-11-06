@@ -61,6 +61,15 @@ For Unix based systems (Linux , OSX) a ssh client is, usually, part of the basic
 	- Write a shell program that receives a list of files and backs them up by copying the file with a 
 	a name of the form originalname.YearMonthDay
 
+## Grep
+
+[reference](http://linuxcourse.rutgers.edu/documents/Bash-Beginners-Guide/chap_04.html)
+
+## Sed
+
+[reference](http://linuxcourse.rutgers.edu/documents/Bash-Beginners-Guide/chap_05.html)
+
+	
 
 
 
