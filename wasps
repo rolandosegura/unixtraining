@@ -1,0 +1,15 @@
+#!/bin/sh
+# A ps(1) like tool for displaying running information for Websphere application server processes.
+# tested with was 8.
+
+ps -ef|grep WsServer|grep -v grep|awk '
+BEGIN {
+	printf "%-8s %-8s %-8s %-8s %-8s %-16s %-16s %-32s\n","UID","PID","PPID","STime","Time","Cell","Node","Server"
+}
+$5 ~ /^[0-9]/ {
+	printf "%-8s %-8d %-8d %-8s %-8s %-16s %-16s %-32s\n",$1,$2,$3,$5,$7,$(NF-2),$(NF-1),$NF
+}
+$5 ~ /^[A-Za-z][a-z][a-z]/ {
+	printf "%-8s %-8d %-8d %-8s %-8s %-16s %-16s %-32s\n",$1,$2,$3,$5 " " $6,$8,$(NF-2),$(NF-1),$NF
+}
+'
