@@ -1,0 +1,8 @@
+#!/bin/sh
+# certlinks builds a table listing the topics of a IBM certification
+# test useful for loading the content in a spreadsheet and crossing
+# of what you already know or don't know.
+
+url=$1
+curl $1|
+sed -n 's;.*name="\(.*\)" href="\(.*\)">\(.*\)</a></li>;\1,\2,\3;p' 
